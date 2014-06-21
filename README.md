@@ -5,7 +5,7 @@ Example custom aggregation function that computes a basic order book to a fixed
 depth from example sample market book data (see example below).  The depth is
 fixed at 3 in this crude demo source code (see the source to change the depth).
 
-### Compile & copy the custom aggregation operator
+### Compile & install the custom aggregation operator
 
 The orderbook custom aggregate function is defined in
 orderbook/src/orderbook.cpp. You'll need to have installed a copy of SciDB and
