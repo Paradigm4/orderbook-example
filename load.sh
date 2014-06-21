@@ -28,3 +28,6 @@ echo "Count of add + modify + delete orders is ${N}"
 iquery -aq "remove(load_a)"
 iquery -aq "remove(load_d)"
 iquery -aq "remove(load_m)"
+
+
+echo "Done loading raw data. Proceed to the ./redim.sh script"

@@ -2,8 +2,8 @@ orderbook-example
 ============
 
 Example custom aggregation function that computes a basic order book to a fixed
-depth from example ARCA book data (see example below).  The depth is fixed at 3
-in this crude demo source code (see the source to change the depth).
+depth from example sample market book data (see example below).  The depth is
+fixed at 3 in this crude demo source code (see the source to change the depth).
 
 ### Compile & copy the custom aggregation operator
 
@@ -74,7 +74,7 @@ output string up into separate attributes.
 
 ## Example Use
 
-### Download raw example ARCA book data into SciDB (about 2.3 GB)
+### Download raw sample ARCA data into SciDB (about 2.3 GB)
 ```
 wget ftp://ftp.nyxdata.com/Historical%20Data%20Samples/TAQ%20NYSE%20ArcaBook/EQY_US_ALL_ARCA_BOOK_20130404.csv.gz
 

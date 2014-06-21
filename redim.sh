@@ -30,4 +30,6 @@ redimension(
   <order_record: string null> [symbol_index=0:*,5,0, ms=0:86399999, 86400000, 0]
 ), symbol_time)"
 
+echo
+echo "Done redimensioning into array symbol_index."
 echo "Ready to run  book.sh"
