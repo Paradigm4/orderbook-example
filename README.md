@@ -80,14 +80,8 @@ wget ftp://ftp.nyxdata.com/Historical%20Data%20Samples/TAQ%20NYSE%20ArcaBook/EQY
 
 ./load.sh EQY_US_ALL_ARCA_BOOK_20130404.csv.gz
 ```
-That example is a sizable download and can take a while to load on small
-SciDB clusters. Here is a smaller example:
-### Download raw example NYSE data into SciDB (about 30 MB)
-```
-wget ftp://ftp.nyxdata.com/Historical%20Data%20Samples/TAQ%20NYSE%20Trades/EQY_US_NYSE_TRADE_20130404.zip
-
-./load.sh EQY_US_NYSE_TRADE_20130404.zip
-```
+Note! The example is a sizable download (2.3 GB) and can take a while to load on small
+SciDB clusters.
 
 
 The raw data contains three different record formats corresponding to the
