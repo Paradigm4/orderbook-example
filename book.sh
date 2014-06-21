@@ -5,6 +5,7 @@
 # bid price, bid vol, ...,  ask price, ask vol, ...
 
 iquery -aq "load_library('orderbook')" || echo "Error: please install the orderbook aggregate. See https://github.com/Paradigm4/orderbook-example"
+iquery -naq "remove(book)" 2>/dev/null
 q="store(variable_window(symbol_time, ms, 1, 0, orderbook(order_record)), book)"
 iquery -naq "$q"
 

@@ -2,8 +2,8 @@ orderbook-example
 ============
 
 Example custom aggregation function that computes a basic order book to a fixed
-depth from example sample market book data (see example below).  The depth is
-fixed at 3 in this crude demo source code (see the source to change the depth).
+depth from example sample market book data (see example below).
+The depth is fixed at 10 at compiled time (see the source to change the depth).
 
 ### Compile & install the custom aggregation operator
 
@@ -57,16 +57,15 @@ order_type, ref_id, price, size, symbol, ask_bid_type|
 The output is a 2-d array with the same dimensions as the input
 array and a single string attribute with the format
 ```
-bp1, bv1, bp2, bv2, bp3, bv3, ap1, av1, ap2, av2, ap3, av3
+bp1, bv1, bp2, bv2, bp3, bv3 |  ap1, av1, ap2, av2, ap3, av3
 ```
 where, bp1 means "bid price 1", "bv1 means bid volume 1", and
 ap1 and av1 are similarly defined for ask prices and volumes, and
 bp1 &lt; bp2 &lt; bp3 &lt; ap1 &lt; ap2 &lt; ap3.
 
 It's possible (likely near the start of the day) that one or more
-prices and volumes are not available, in which case they are represented
-by the word 'null'. Thus the output value is always a string with
-exactly 12 comma separated values.
+prices and volumes are not available, in which case the book depths
+on the bid and ask side may differ.
 
 See the shell scripts in this project for examples of splitting this
 output string up into separate attributes.

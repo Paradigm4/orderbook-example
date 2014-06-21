@@ -352,63 +352,53 @@ public:
 
     void finalResult(Value& result, Value const& state)
     {
-        char buf[512]; 
-/* Extra book depth of 3, super cheesy... */
-        Order hb1,hb2,hb3;
-        hb1.price = -1; hb2.price = -1; hb3.price = -1;
-        if (_highestBuyIter != _priceToBuyVolume.rend())
-        {
-            hb1.price = _highestBuyIter->first;
-            hb1.volume = _highestBuyIter->second;
-        ++_highestBuyIter;
-        if(_highestBuyIter != _priceToBuyVolume.rend())
-        {
-            hb2.price = _highestBuyIter->first;
-            hb2.volume = _highestBuyIter->second;
-        ++_highestBuyIter;
-        if(_highestBuyIter != _priceToBuyVolume.rend())
-        {
-            hb3.price = _highestBuyIter->first;
-            hb3.volume = _highestBuyIter->second;
-        }
-        }
-        }
+        unsigned int j,k;
+        unsigned int depth = 10;  // XXX FIXED DEPTH--find a way to parameterize this?
+        char buf[128]; 
+        string ans = "";
+        map<int,int>::iterator i;
 
-        Order ls1,ls2,ls3;
-        ls1.price = -1; ls2.price = -1; ls3.price = -1;
-        if (_lowestSellIter != _priceToSellVolume.end())
+        memset(buf, 0, 128);
+/* Write out the formatted bid prices */
+        j = 0;
+        k = 0;
+        for(i = _priceToBuyVolume.begin(); i != _priceToBuyVolume.end(); ++i)
         {
-            ls1.price = _lowestSellIter->first;
-            ls1.volume = _lowestSellIter->second;
-        ++_lowestSellIter;
-        if (_lowestSellIter != _priceToSellVolume.end())
+          if(_priceToBuyVolume.size() - j > depth)
+          {
+            ++j;
+            continue;
+          }
+          if(k==0)
+          {
+            snprintf(buf, 128, "%.3f,%.0f", ((double)i->first)/1000.0, (double)i->second);
+            k = 1;
+          } else
+          {
+            snprintf(buf, 128, ", %.3f,%.0f", ((double)i->first)/1000.0, (double)i->second);
+          }
+          ans = ans + buf;
+          ++j;
+        }
+        ans = ans + " | ";
+/* Write out the formatted ask prices */
+        memset(buf, 0, 128);
+        j = 0;
+        for(i = _priceToSellVolume.begin(); i != _priceToSellVolume.end(); ++i)
         {
-            ls2.price = _lowestSellIter->first;
-            ls2.volume = _lowestSellIter->second;
-        ++_lowestSellIter;
-        if (_lowestSellIter != _priceToSellVolume.end())
-        {
-            ls3.price = _lowestSellIter->first;
-            ls3.volume = _lowestSellIter->second;
-         }
-         }
-         }
-
-        double p1,p2,p3,v1,v2,v3;
-        double p4,p5,p6,v4,v5,v6;
-        p1 = p2 = p3 = v1 = v2 = v3 = NAN;
-        p4 = p5 = p6 = v4 = v5 = v6 = NAN;
-        if(hb1.price>=0) {p1 = hb1.price/1000.0; v1 = hb1.volume;}
-        if(hb2.price>=0) {p2 = hb2.price/1000.0; v2 = hb2.volume;}
-        if(hb3.price>=0) {p3 = hb3.price/1000.0; v3 = hb3.volume;}
-        if(ls1.price>=0) {p4 = ls1.price/1000.0; v4 = ls1.volume;}
-        if(ls2.price>=0) {p5 = ls2.price/1000.0; v5 = ls2.volume;}
-        if(ls3.price>=0) {p6 = ls3.price/1000.0; v6 = ls3.volume;}
-        snprintf(buf, 512, "%.3f,%.0f,%.3f,%.0f,%.3f,%.0f,%.3f,%.0f,%.3f,%.0f,%.3f,%.0f",
-                 p3, v3, p2, v2, p1, v1, p4, v4, p5, v5, p6, v6);
-        result.setString(buf);
+          if(j==0)
+          {
+            snprintf(buf, 128, "%.3f, %.0f", ((double)i->first)/1000.0, (double)i->second);
+          } else
+          {
+            snprintf(buf, 128, ", %.3f, %.0f", ((double)i->first)/1000.0, (double)i->second);
+          }
+          ans = ans + buf;
+          ++j;
+          if(j>depth) break;
+        }
+        result.setString(ans.c_str());
     }
-
 };
 
 
