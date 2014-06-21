@@ -116,4 +116,4 @@ The output array from this step is called symbol&#95;time.
 This produces the order book, formatted as the following comma separated output: 
        {symbol, timestamp} 'bid price, bid volume, ask price, ask volume'
 
-The output array is named 'book.'
+The output array is named book.
