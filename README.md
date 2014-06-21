@@ -34,7 +34,7 @@ Be sure to copy liborderbook.so to the plugin directory on all your SciDB cluste
 
 ## Synopsis
 
-The orderbook aggregate function normally runs with SciDB's `variable&#95;window`
+The orderbook aggregate function normally runs with SciDB's `variable_window`
 aggregate operator along a time dimension:
 
 ```
