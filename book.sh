@@ -5,5 +5,5 @@
 # bid price, bid vol, ...,  ask price, ask vol, ...
 
 iquery -aq "load_library('orderbook')"
-q="store(variable_window(arca, ms, 1, 0, orderbook(order_record)), book)"
+q="store(variable_window(symbol_time, ms, 1, 0, orderbook(order_record)), book)"
 iquery -naq "$q"

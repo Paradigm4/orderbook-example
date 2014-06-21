@@ -74,17 +74,29 @@ output string up into separate attributes.
 
 ## Example Use
 
-### Download raw example ARCA book data into SciDB
+### Download raw example ARCA book data into SciDB (about 2.3 GB)
 ```
-wget -O - -q ftp://ftp.nyxdata.com/Historical%20Data%20Samples/TAQ%20NYSE%20ArcaBook/EQY_US_ALL_ARCA_BOOK_20130404.csv.gz
+wget ftp://ftp.nyxdata.com/Historical%20Data%20Samples/TAQ%20NYSE%20ArcaBook/EQY_US_ALL_ARCA_BOOK_20130404.csv.gz
 
 ./load.sh EQY_US_ALL_ARCA_BOOK_20130404.csv.gz
 ```
-The raw ARCA data contains three different record formats corresponding to the
+That example is a sizable download and can take a while to load on small
+SciDB clusters. Here is a smaller example:
+### Download raw example NYSE data into SciDB (about 30 MB)
+```
+wget ftp://ftp.nyxdata.com/Historical%20Data%20Samples/TAQ%20NYSE%20Trades/EQY_US_NYSE_TRADE_20130404.zip
+
+./load.sh EQY_US_NYSE_TRADE_20130404.zip
+```
+
+
+The raw data contains three different record formats corresponding to the
 three different order types: A)dd, M)odify, & D)elete.  The load makes
 three passes through the raw data file, one per order type, and standardizes
 all three record types into a common format. The `load.sh` script standardizes records, storing
-them into a single array named arca&#95;flat.
+them into a single array named flat.
+
+The output array from this step is called flat.
 
 
 ### Redimension into a 2D array organized by time and symbol
@@ -95,6 +107,8 @@ Since SciDB requires integer dimensions, the symbol dimension is first mapped
 to an integer. This script then appends a new attribute named order&#95;record to
 each row in the arca&#95;flat array. This attribute is the input value required by
 the orderbook aggregate, described in step (1) above. 
+
+The output array from this step is called symbol&#95;time.
 
 
 ### Run book.sh
