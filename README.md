@@ -22,7 +22,15 @@ apt-get install scidb-14.3-dev scidb-14.3-dev-tools scidb-14.3-libboost1.54-dev 
 
 Build and install the order book aggregate with:
 ```
-cd orderbook
+# Clone the git repository
+git clone https://github.com/Paradigm4/orderbook-example
+
+# (If that didn't work, maybe you don't have git installed? You could alternatively try:
+# wget https://github.com/Paradigm4/orderbook-example/archive/master.zip
+# unzip master.zip
+# mv orderbook-example-master orderbook-example
+
+cd orderbook-example
 make
 cp liborderbook.so /opt/scidb/14.3/lib/scidb/plugins
 # (If that fails, try as root:)
