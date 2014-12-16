@@ -14,7 +14,7 @@ iquery -naq "remove(book)" 2>/dev/null
 # cells per chunk or so. It's better to err on the high side here than
 # to create an array with tons of chunks with hardly anything in them.
 #
-q="store(redimension(variable_window(symbol_time, ms, 1, 0, orderbook(order_record)),<order_record_orderbook:string null> [symbol_index=0:*,100,0,ms=0:86399999,10000000,0]), book)"
+q="store(redimension(cumulate(symbol_time, orderbook(order_record), ms),<order_record_orderbook:string null> [symbol_index=0:*,100,0,ms=0:86399999,10000000,0]), book)"
 iquery -naq "$q"
 
 echo

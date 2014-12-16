@@ -42,18 +42,17 @@ Be sure to copy liborderbook.so to the plugin directory on all your SciDB cluste
 
 ## Synopsis
 
-The orderbook aggregate function normally runs with SciDB's `variable_window`
+The orderbook aggregate function normally runs with SciDB's `cumulate`
 aggregate operator along a time dimension:
 
 ```
-variable_window(arca, ms, 1, 0, orderbook(order_record))
+cumulate(arca, orderbook(order_record), ms)
 ```
 
 where,
 
 * arca  is a time by symbol data matrix,
 * ms    is the name of the time dimension,
-* 1, 0  indicaes that orderbook variable window size of 1 trailing (required)
 * order&#95;record is a specially formatted string input attribute for orderbook.
 
 The orderbook function expects the input attribute to have the following special string form:
