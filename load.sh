@@ -13,8 +13,8 @@ zcat $1 | grep "^D" | loadcsv.py  -s "<type:char,sequence:int64,ref:int64,second
 
 # Now combine these three arrays into one called 'flat':
 
-iquery -naq "remove(flat)"
-iquery -naq "create_array(flat, <type:char,sequence:int64,ref:int64,exchange:char,ordertype:char,size:int64,symbol:string,price:double,seconds:int64,milliseconds:int64,system:char,qid:string> [i=0:*,10000,0])"
+iquery -naq "remove(flat)" 2>/dev/null
+iquery -naq "create array flat  <type:char,sequence:int64,ref:int64,exchange:char,ordertype:char,size:int64,symbol:string,price:double,seconds:int64,milliseconds:int64,system:char,qid:string> [i=0:*,10000,0]"
 time iquery -naq "insert(load_a, flat)"
 N=$(iquery -ocsv -aq "aggregate(flat, count(*))" | tail -n 1)
 echo "Count of add orders is ${N}"
