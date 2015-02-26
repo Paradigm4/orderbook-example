@@ -230,7 +230,7 @@ public:
         string orderField;
         uint64_t id = 0;
         int counter = 0;
-        char action;
+        char action = 'A';
         while (getline(ss, orderField, ','))
         {
           if (counter == 0)
