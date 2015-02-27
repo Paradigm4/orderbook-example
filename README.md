@@ -15,11 +15,15 @@ of SciDB you're running).
 
 #### Installation of SciDB devel packages on RHEL 6 or CentOS
 ```
-yum install scidb-14.3-dev.x86_64 scidb-14.3-dev-tools.x86_64 scidb-14.3-dev-tools-dbg.x86_64 scidb-14.3-plugins-dbg.x86_64 scidb-14.3-libboost-devel.x86_64 scidb-14.3-libboost-static.x86_64
+sudo yum install scidb-14.3-dev.x86_64 scidb-14.3-dev-tools.x86_64 scidb-14.3-dev-tools-dbg.x86_64 scidb-14.3-plugins-dbg.x86_64 scidb-14.3-libboost-devel.x86_64 scidb-14.3-libboost-static.x86_64
 ```
 #### Installation of SciDB devel packages on Ubuntu
 ```
-apt-get install scidb-14.3-dev scidb-14.3-dev-tools scidb-14.3-libboost1.54-dev scidb-14.3-libmpich2-dev scidb-14.3-libboost1.54-all-dev
+sudo apt-get install scidb-14.3-dev scidb-14.3-dev-tools scidb-14.3-libboost1.54-dev scidb-14.3-libmpich2-dev scidb-14.3-libboost1.54-all-dev
+
+# For SciDB 14.12, for example:
+sudo apt-get install scidb-14.12-dev scidb-14.12-dev-tools scidb-14.12-libboost1.54-dev scidb-14.12-libmpich2-dev scidb-14.12-libboost1.54-all-dev
+
 ```
 
 Build and install the order book aggregate with:
