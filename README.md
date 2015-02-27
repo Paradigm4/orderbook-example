@@ -9,7 +9,9 @@ The depth is fixed at 10 at compiled time (see the source to change the depth).
 
 The orderbook custom aggregate function is defined in
 orderbook/src/orderbook.cpp. You'll need to have installed a copy of SciDB and
-its development packages. You can install SciDB's development packages with
+its development packages. You can install SciDB's development packages with (shown
+for SciDB version 14.3, adjust version numbers accordingly for whatever version
+of SciDB you're running).
 
 #### Installation of SciDB devel packages on RHEL 6 or CentOS
 ```
