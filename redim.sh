@@ -29,6 +29,9 @@ redimension(
     order_record, type+','+format(ref,'%.0f')+','+format(price,'%f')+','+format(size, '%.0f')+','+symbol +','+ordertype + '|', ms, seconds*1000 + milliseconds),
   <order_record: string null> [symbol_index=0:*,5,0, ms=0:86399999, 86400000, 0]
 ), symbol_time)"
+#Note that the above redimension loses some data due to collisions because of the symbol and time dimensions. 
+#This script is built to be a general example that doesn't require tuning. You can add a synthetic dimension to store the collisions. 
+#[symbol_index=0:*,5,0, ms=0:86399999, 86400000, 0, synth_dim=0:999,1000,0]
 
 echo
 echo "Done redimensioning into array symbol_index."
