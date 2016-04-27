@@ -26,7 +26,7 @@ endif
 
 all:
 	@if test ! -d "$(SCIDB)"; then echo  "Error. Try:\n\nmake SCIDB=<PATH TO SCIDB INSTALL PATH>"; exit 1; fi
-	$(CXX) $(CFLAGS) $(INC) -o liborderbook.so orderbook.cpp $(LIBS)
+	$(CXX) $(CFLAGS) $(INC) -o liborderbook.so plugin.cpp orderbook.cpp $(LIBS)
 	@echo "Now copy liborderbook.so to your SciDB lib/scidb/plugins directory and restart SciDB."
 
 clean:

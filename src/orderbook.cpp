@@ -25,6 +25,8 @@
  *
  * END_COPYRIGHT
  */
+
+#include <SciDBAPI.h>
 #include <iostream>
 #include <string>
 #include <sstream>

@@ -15,7 +15,7 @@ iquery -naq "remove(book)" 2>/dev/null
 # to create an array with tons of chunks with hardly anything in them.
 #
 q="store(redimension(cumulate(symbol_time, orderbook(order_record), ms),<order_record_orderbook:string null> [symbol_index=0:*,100,0,ms=0:86399999,10000000,0]), book)"
-iquery -naq "$q"
+time iquery -naq "$q"
 
 echo
 echo "Done creating an example book array. Here is its schema:"
